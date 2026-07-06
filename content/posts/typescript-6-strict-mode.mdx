@@ -1,0 +1,38 @@
+---
+title: "TypeScript 6 Strict Mode: What Backend Engineers Should Know"
+date: "2026-07-05"
+category: "TypeScript"
+tags: ["TypeScript", "Backend"]
+excerpt: "TypeScript 6.0 flips strict mode on by default. Here's what that means in practice, and the two compiler flags worth adding on top of it."
+---
+
+TypeScript 6.0 made `strict: true` the default. If you're coming from a backend language like Go or Java, this is the behavior you already expect — but two extra flags are worth knowing about.
+
+## noUncheckedIndexedAccess
+
+By default, indexing into an array gives you `T`, not `T | undefined`:
+
+```typescript
+const posts: string[] = [];
+const first = posts[0]; // type is string — but it's actually undefined!
+```
+
+With `noUncheckedIndexedAccess` enabled, the type becomes `string | undefined`, forcing you to handle the empty case. This blog's own `tsconfig.json` enables it.
+
+## noImplicitOverride
+
+If you override a method in a subclass, you must say so explicitly:
+
+```typescript
+class CachedPostRepo extends PostRepo {
+  override getBySlug(slug: string) {
+    // ...
+  }
+}
+```
+
+Rename the parent method later and the compiler catches every stale override. It's the same guarantee `@Override` gives you in Java.
+
+## Takeaway
+
+Strict defaults are the compiler doing code review for free. Take everything it offers.

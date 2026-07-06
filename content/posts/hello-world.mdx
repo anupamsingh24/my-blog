@@ -1,0 +1,36 @@
+---
+title: "Hello World: Setting Up This Blog"
+date: "2026-07-06"
+category: "Meta"
+tags: ["Next.js", "TypeScript"]
+excerpt: "How this blog is built: Next.js 16, TypeScript 6, MDX content in Git, and free hosting. A quick tour of the stack and why each piece was chosen."
+---
+
+Welcome to my blog! This first post doubles as documentation for how the site itself works.
+
+## The stack
+
+Everything here is statically generated from `.mdx` files living in the repository:
+
+- **Next.js 16** (App Router) for routing and static generation
+- **TypeScript 6** in strict mode
+- **Tailwind CSS 4** for styling
+- **MDX** for content — Markdown with the option to embed React components
+
+## Why files instead of a CMS?
+
+As a backend engineer, I want my content pipeline to behave like code:
+
+```typescript
+export function getPostBySlug(slug: string): Post {
+  const raw = fs.readFileSync(`content/posts/${slug}.mdx`, "utf8");
+  const { data, content } = matter(raw);
+  return { slug, ...data, content };
+}
+```
+
+Posts are version-controlled, reviewable, and greppable. Publishing is `git push`. There is no database to migrate, no admin panel to secure, and nothing to pay for.
+
+## What's next
+
+More posts about backend systems, TypeScript patterns, and things I learn the hard way. Stay tuned.
