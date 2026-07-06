@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   // Static export works great for this kind of content-driven blog on
   // Cloudflare Pages / GitHub Pages. Comment the line below out if you
   // want to deploy to Vercel and use server features instead.
-  // output: "export",
+  output: "export",
 };
 
 export default nextConfig;
