@@ -1,8 +1,6 @@
 # My Blog
 
 A personal tech blog built with Next.js 16, TypeScript 6, Tailwind CSS 4, and MDX.
-Design inspired by louistsai.com: hero banner, profile sidebar with stat counters,
-category/tag/archive pages, maroon accent, dark mode, and a live uptime ticker.
 
 ## Quick start
 
